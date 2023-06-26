@@ -3,18 +3,18 @@
 import React, { useContext } from "react";
 import { Context } from "../context";
 import { useRouter } from "next/navigation";
-
 import axios from "axios";
 import "./styles/auth.css";
 
 export default function Auth() {
   const { username, setUsername, secret, setSecret } = useContext(Context);
   const router = useRouter();
-  console.log(process.env.NEXT_PUBLIC_PRIVATE_KEY);
-  console.log(process.env.NEXT_PUBLIC_PROJECT_ID);
+
   function onSubmit(e) {
     e.preventDefault();
-    if (username.length === 0 || secret.length === 0) return;
+    if (username.length === 0 || secret.length === 0) {
+      alert("Email and Password area must be filled");
+    }
     axios
       .put(
         `https://api.chatengine.io/users/`,

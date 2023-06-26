@@ -1,4 +1,5 @@
 "use client";
+
 import React, { useState, useEffect, useContext } from "react";
 import { Context } from "../../context";
 import { useRouter } from "next/navigation";
@@ -30,7 +31,9 @@ export default function Page() {
 
   if (!showChat) return <div />;
 
-  return (
+  return !showChat ? (
+    <div />
+  ) : (
     <div className="background">
       <div className="shadow">
         <ChatEngine
